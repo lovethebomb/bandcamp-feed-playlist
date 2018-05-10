@@ -1,0 +1,29 @@
+#track_play_waypoint_controls {
+    color: #fcfcfc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:rgba(0, 0, 0, 0.8);
+    height: 32px;
+    position: fixed;
+    width: 290px;
+    margin: 0;
+    bottom: 0px;
+    top: auto;
+    left: auto;
+    right: auto;
+    border-radius: 0;
+    z-index: 101;
+    padding: 0 0.5em;
+    box-sizing: border-box;
+    line-height: 32px;
+}
+
+#track_play_waypoint_controls a {
+    margin: 0 1em;
+    display: inline-block;
+}
+
+#sidebar .track_play_waypoint.activated {
+    bottom: 32px !important;
+}
