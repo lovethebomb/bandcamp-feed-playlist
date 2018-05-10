@@ -76,7 +76,7 @@
     FeedPlaylist.prototype.onStateUpdate = function(state) {
         // TODO: replace setTimeout
         if (state === "COMPLETED") {
-            var timer = setTimeout(this.handlerNextTrack, 1000);
+            let timer = setTimeout(this.handlerNextTrack, 1000);
             timer = undefined;
         }
         return;

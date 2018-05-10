@@ -2,6 +2,7 @@
 
 This is a lazy Chrome Extension that adds a mini player on  the [bandcamp feed](http://www.bandcamp.com) page.
 It allows you to quickly Play/Pause, go back and forth, and support autoplay of the tracks shared on your feed.
+
 I was just tired of clicking every cover to check out what it was.
 
 ## Usage
