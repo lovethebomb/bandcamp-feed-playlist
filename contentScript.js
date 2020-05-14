@@ -1,7 +1,7 @@
 (function(window, document) {
 
     function FeedPlaylist() {
-        if (!window.playerview) {
+        if (!window.playerview || !window.Dom) {
             console.error('[bandcampFeedPlaylist] player is not found.')
             return null;
         }
@@ -22,7 +22,7 @@
             this.$position = this.$el.querySelector('#track_play_waypoints_controls_position');
             this.$duration = this.$el.querySelector('#track_play_waypoints_controls_duration');
 
-             this.observe();
+            this.observe();
             this.registerMediaKeys();
             console.debug('[bandcampFeedPlaylist] injected');
         }
@@ -81,6 +81,19 @@
         if (state === "COMPLETED") {
             let timer = setTimeout(this.handlerNextTrack, 1000);
             timer = undefined;
+        }
+
+        // We try to force the waypoint offset to show 'activated' properly
+        const track = window.playerview._current_track_list_entry();
+        const $story = document.querySelector(`[data-trackid='${track.id}'`);
+
+        if (!$story) return
+
+        if (!window.Dom.inViewport($story)) {
+            // We push at the end of execution stack
+            setTimeout(() => {
+                this.$trackPlayWaypoint.classList.add('activated')
+            }, 0)
         }
         return;
     }
