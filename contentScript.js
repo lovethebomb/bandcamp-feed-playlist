@@ -13,6 +13,7 @@
         this._position = this.playlist._position;
         this._duration = this.playlist._duration;
         this.handlerNextTrack = function() { return this.next() }.bind(this);
+        this.handlerPreviousTrack = function() { return this.previous() }.bind(this);
 
         this.$trackPlayWaypoint = window.playerview._waypoints[0];
 
@@ -20,7 +21,9 @@
             this.$el = this.injectHtml();
             this.$position = this.$el.querySelector('#track_play_waypoints_controls_position');
             this.$duration = this.$el.querySelector('#track_play_waypoints_controls_duration');
+
              this.observe();
+            this.registerMediaKeys();
             console.debug('[bandcampFeedPlaylist] injected');
         }
     }
@@ -123,6 +126,17 @@
         });
 
         return this.$trackPlayWaypoint.parentElement.appendChild(container);
+    }
+
+    // Support: Chrome Desktop 73+, Chrome Mobile 57+
+    // https://www.chromestatus.com/feature/5639924124483584
+    FeedPlaylist.prototype.registerMediaKeys = function() {
+        if (!('mediaSession' in navigator)) {
+            console.warn('[bandcampFeedPlaylist] MediaSession API not supported in this browser - https://www.chromestatus.com/feature/5639924124483584')
+        }
+
+        navigator.mediaSession.setActionHandler('previoustrack', this.handlerPreviousTrack)
+        navigator.mediaSession.setActionHandler('nexttrack', this.handlerNextTrack)
     }
 
     console.debug('[bandcampFeedPlaylist] loaded');
