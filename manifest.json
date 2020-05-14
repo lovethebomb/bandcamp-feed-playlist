@@ -1,7 +1,7 @@
 {
     "name": "Bandcamp Feed Playlist",
-    "version": "1.0",
-    "description": "Allow to play all of your feed in one click.",
+    "version": "1.1",
+    "description": "Play all of your feed in one click.",
     "permissions": ["activeTab", "declarativeContent"],
     "content_scripts": [
         {
