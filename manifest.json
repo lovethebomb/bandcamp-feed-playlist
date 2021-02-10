@@ -1,8 +1,10 @@
 {
     "name": "Bandcamp Feed Playlist",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "Play all of your feed in one click.",
-    "permissions": ["declarativeContent"],
+    "permissions": [
+        "https://bandcamp.com/*/feed"
+    ],
     "content_scripts": [
         {
             "matches": [
